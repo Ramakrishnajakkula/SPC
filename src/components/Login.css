@@ -1,0 +1,109 @@
+/* components/Login.css */
+.login-container {
+    display: flex;
+    min-height: 70vh;
+    background-color: #f7fafc;
+  }
+  
+  .happenings {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e2e8f0;
+    border-radius: 0.5rem;
+  }
+  
+  .happenings img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+  }
+  
+  .login-frame {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: #e2e8f0;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .login-box {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .login-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #4299e1;
+  }
+  
+  .login-form .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .login-form label {
+    display: block;
+    color: #4a5568;
+    margin-bottom: 0.5rem;
+  }
+  
+  .login-form input {
+    width: 70%;
+    padding: 0.5rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 0.25rem;
+  }
+  
+  .login-form button {
+    width: 60%;
+    background-color: #4299e1;
+    color: #fff;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 1rem;
+  }
+  
+  .login-form button:hover {
+    background-color: #3182ce;
+  }
+  
+  .additional-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+  
+  .signup-link, .forgot-password-link {
+    color: #4299e1;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .signup-link:hover, .forgot-password-link:hover {
+    color: #3182ce;
+  }
+  @media (max-width: 768px) {
+    .happenings {
+      display: none;
+    }
+  
+    .login-frame {
+      flex: 1 1 100%;
+    }
+  }
+  
+  
