@@ -1,109 +1,120 @@
-/* components/Login.css */
 .login-container {
-    display: flex;
-    min-height: 70vh;
-    background-color: #f7fafc;
-  }
-  
+  display: flex;
+  min-height: 70vh;
+  background-color: #f7fafc;
+  justify-content: center;
+}
+
+.login-frame {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #e2e8f0;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-box {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form .form-group {
+  width: 100%;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form label {
+  text-align: center;
+  color: #4a5568;
+  margin-bottom: 0.5rem;
+}
+
+.login-form input {
+  width: 70%;
+  padding: 1rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 0.25rem;
+  text-align: center;
+}
+
+.login-form button {
+  width: 80%;
+  margin: 1rem auto;
+  display: block;
+}
+
+.additional-links {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+@media (max-width: 768px) {
   .happenings {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #e2e8f0;
-    border-radius: 0.5rem;
+    display: none;
   }
+
   
-  .happenings img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 0.5rem;
-  }
-  
-  .login-frame {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    background-color: #e2e8f0;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .login-box {
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  .login-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 1.5rem;
-    text-align: center;
-    color: rgb(255, 112, 67);
-  }
-  
-  .login-form .form-group {
-    margin-bottom: 1rem;
-  }
-  
-  .login-form label {
-    display: block;
-    color: #4a5568;
-    margin-bottom: 0.5rem;
-  }
-  
-  .login-form input {
-    width: 70%;
-    padding: 0.5rem;
-    border: 1px solid #cbd5e0;
-    border-radius: 0.25rem;
-  }
-  
-  .login-form button {
-    width: 60%;
-    background-color: rgb(255, 112, 67);
-    color: #fff;
-    padding: 0.75rem;
-    border: none;
-    border-radius: 0.25rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 1rem;
-  }
-  
-  .login-form button:hover {
-    background-color: rgb(172, 58, 4);
-  }
-  
-  .additional-links {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1rem;
-  }
-  
-  .signup-link, .forgot-password-link {
-    color: rgb(255, 112, 67);
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  
-  .signup-link:hover, .forgot-password-link:hover {
-    color: rgb(172, 58, 4);
-  }
-  @media (max-width: 768px) {
-    .happenings {
-      display: none;
-    }
-  
-    .login-frame {
-      flex: 1 1 100%;
-    }
-  }
-  
-  
+.login-form {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem; /* Reduced gap between form elements */
+}
+
+.form-group {
+  width: auto;
+  height:40px;
+  margin-bottom: 3rem; /* Reduced margin */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form label {
+  display: block;
+  color: #4a5568;
+  margin-bottom: 0.25rem;
+}
+
+.login-form input {
+  width: 90%;
+  padding: 0.25rem;
+  border: 2px solid #cbd5e0;
+  border-radius: 0.25rem;
+  border-bottom: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form button {
+  width: 70%;
+  margin: 2rem auto;
+  display: block;
+}
+}
