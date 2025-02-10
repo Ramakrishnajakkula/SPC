@@ -45,7 +45,7 @@
     font-weight: bold;
     margin-bottom: 1.5rem;
     text-align: center;
-    color: #4299e1;
+    color: rgb(255, 112, 67);
   }
   
   .login-form .form-group {
@@ -67,7 +67,7 @@
   
   .login-form button {
     width: 60%;
-    background-color: #4299e1;
+    background-color: rgb(255, 112, 67);
     color: #fff;
     padding: 0.75rem;
     border: none;
@@ -78,7 +78,7 @@
   }
   
   .login-form button:hover {
-    background-color: #3182ce;
+    background-color: rgb(172, 58, 4);
   }
   
   .additional-links {
@@ -88,13 +88,13 @@
   }
   
   .signup-link, .forgot-password-link {
-    color: #4299e1;
+    color: rgb(255, 112, 67);
     text-decoration: none;
     transition: color 0.3s;
   }
   
   .signup-link:hover, .forgot-password-link:hover {
-    color: #3182ce;
+    color: rgb(172, 58, 4);
   }
   @media (max-width: 768px) {
     .happenings {
