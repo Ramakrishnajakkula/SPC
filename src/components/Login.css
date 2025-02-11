@@ -1,8 +1,24 @@
+/* Login.css */
 .login-container {
   display: flex;
-  min-height: 70vh;
-  background-color: #f7fafc;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.happenings {
+  flex: 1;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
   justify-content: center;
+  overflow: hidden;
+}
+
+.happenings img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 3%;
 }
 
 .login-frame {
@@ -11,153 +27,169 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  background-color: #e2e8f0;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .login-box {
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: auto;
-  min-height: 450px;
+  width: 100%;
   max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.login-title {
+  font-size: 2rem;
+  color: rgb(255, 112, 67);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.error-message {
+  background-color: #fee2e2;
+  color: #dc2626;
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 .login-form {
-  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .form-group {
-  width: auto;
-  min-height: 80px; /* Increased to accommodate error message */
-  margin-bottom: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: relative;
 }
 
-.login-form label {
-  text-align: center;
-  color: #4a5568;
-  margin-bottom: 0.5rem;
+.form-group input {
+  width: 100%;
+  padding: 12px 0px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
-.login-form input {
-  width: 90%;
-  padding: 0.5rem;
-  border: 1px solid #cbd5e0;
-  border-radius: 0.25rem;
+.form-group input:focus {
+  border-color: rgb(255, 112, 67);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
   
 }
 
-.login-form button {
-  width: 80%;
-  margin: 1rem auto;
-  display: block;
-}
-
-.additional-links {
+button[type="submit"] {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 0rem;
+  padding: 12px;
+  background-color: rgb(255, 112, 67);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-/* Add to Login.css */
-.error-message {
-  color: #ff4444;
-  text-align: center;
-  margin-bottom: 1rem;
-  padding: 0.5rem;
-  background-color: #ffe6e6;
-  border-radius: 4px;
+button[type="submit"]:hover {
+  background-color: rgb(172, 58, 4);
 }
 
-button.loading {
-  opacity: 0.7;
+button[type="submit"]:disabled {
+  background-color: #9ca3af;
   cursor: not-allowed;
 }
 
-button:disabled {
-  background-color: #cccccc;
+button.loading {
+  position: relative;
+  color: transparent;
+}
+
+button.loading::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 50%;
+  margin: -10px 0 0 -10px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+  
+}
+
+.additional-links {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: #6b7280;
 }
 
 .signup-link {
   color: rgb(255, 112, 67);
   text-decoration: none;
   margin-left: 0.5rem;
+  font-weight: 600;
 }
 
 .signup-link:hover {
-  color: rgb(172, 58, 4);
+  text-decoration: underline;
 }
 
 @media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+  }
   .happenings {
     display: none;
   }
 
-  
-.login-form {
-  width: 100%;
-  /* height: 250px; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem; /* Reduced gap between form elements */
+  .login-frame {
+    padding: 1rem;
+  }
+
+  .login-box {
+    padding: 1.5rem;
+    box-shadow: none;
+  }
+
+  .login-title {
+    font-size: 1.75rem;
+  }
 }
 
-.form-group {
-  width: auto;
-  height:40px;
-  margin-bottom: 3rem; /* Reduced margin */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+@media (max-width: 480px) {
+  .login-frame {
+    padding: 0.5rem;
+  }
 
-.login-form label {
-  display: block;
-  color: #4a5568;
-  margin-bottom: 0.25rem;
-}
+  .happenings {
+    display: none;
+  }
 
-.login-form input {
-  width: 90%;
-  padding: 0.25rem;
-  border: 2px solid #cbd5e0;
-  border-radius: 0.25rem;
-  border-bottom: auto;
-  display: flex;
-  flex-direction: column;
-  
-}
+  .login-box {
+    padding: 1rem;
+  }
 
-.login-form button {
-  width: 70%;
-  margin: 2rem auto;
-  display: block;
-}
-.login-frame {
- 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: auto;
-  padding: 0.02rem;
-  background-color: #e2e8f0;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+  .login-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group input {
+    padding: 10px 0px;
+    font-size: 0.9rem;
+  }
+
+  button[type="submit"] {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
 }

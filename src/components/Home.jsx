@@ -5,6 +5,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons"
 import "./Home.css"
 import happeningsImage from "../assets/image.png"
 import Logo from "../assets/Logo.png"
+import Videos from './Videos';
 
 function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -54,7 +55,7 @@ useEffect(() => {
           <Link to="/" className="nav-link">
             Home
           </Link>
-          <Link to="/Seasons" className="nav-link">
+          <Link to="/VideoManagement" className="nav-link">
             Seasons
           </Link>
           <Link to="/Hackathons" className="nav-link">
@@ -100,6 +101,10 @@ useEffect(() => {
         <img src={happeningsImage || "/placeholder.svg"} alt="Opportunities" className="hero-image" />
         </div>
       </div>
+      <div className="home-videos-section">
+    <h2>Featured Videos</h2>
+      <Videos />
+  </div>
     </div>
   );
 }

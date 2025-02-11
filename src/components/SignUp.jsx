@@ -1,5 +1,6 @@
+// SignUp.jsx
 import React, { useState } from "react";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./SignUp.css";
 import happeningsImage from "../assets/hack.jpeg";
@@ -75,13 +76,14 @@ function SignUp() {
 
     setIsLoading(true);
     try {
-      const response = await axios.post("https://spc-backend-two.vercel.app/api/auth/signup", {
+      const response = await axios.post("http://localhost:5000/api/auth/signup", {
         username: formData.username,
         email: formData.email,
         password: formData.password
       });
 
       localStorage.setItem("token", response.data.token);
+      localStorage.setItem("username", formData.username);
       navigate("/");
     } catch (error) {
       setErrors({
@@ -93,78 +95,81 @@ function SignUp() {
   };
 
   return (
-    <div className="signup-container">
-      <div className="happenings">
+    <div className="sup-container">
+      <div className="sup-happenings">
         <img src={happeningsImage} alt="Happenings" />
       </div>
-      <div className="signup-frame">
-        <div className="signup-box">
-          <h1 className="signup-title">Sign Up</h1>
+      <div className="sup-frame">
+        <div className="sup-box">
+          <h1 className="sup-title">Sign Up</h1>
           {errors.submit && (
-            <div className="error-message">{errors.submit}</div>
+            <div className="sup-error-message">{errors.submit}</div>
           )}
-          <form onSubmit={handleSubmit} className="signup-form">
-            <div className="form-group">
+          <form onSubmit={handleSubmit} className="sup-form">
+            <div className="sup-form-group">
               <input
                 type="text"
                 name="username"
                 value={formData.username}
                 placeholder="Enter username"
                 onChange={handleChange}
+                className={errors.username ? "sup-input-error" : ""}
               />
               {errors.username && (
-                <span className="error-text">{errors.username}</span>
+                <span className="sup-error-text">{errors.username}</span>
               )}
             </div>
-            <div className="form-group">
+            <div className="sup-form-group">
               <input
                 type="email"
                 name="email"
                 value={formData.email}
                 placeholder="Enter email"
                 onChange={handleChange}
+                className={errors.email ? "sup-input-error" : ""}
               />
               {errors.email && (
-                <span className="error-text">{errors.email}</span>
+                <span className="sup-error-text">{errors.email}</span>
               )}
             </div>
-            <div className="form-group">
+            <div className="sup-form-group">
               <input
                 type="password"
                 name="password"
                 value={formData.password}
                 placeholder="Enter password"
                 onChange={handleChange}
+                className={errors.password ? "sup-input-error" : ""}
               />
               {errors.password && (
-                <span className="error-text">{errors.password}</span>
+                <span className="sup-error-text">{errors.password}</span>
               )}
             </div>
-            <div className="form-group">
+            <div className="sup-form-group">
               <input
                 type="password"
                 name="confirmPassword"
                 value={formData.confirmPassword}
                 placeholder="Confirm password"
                 onChange={handleChange}
+                className={errors.confirmPassword ? "sup-input-error" : ""}
               />
               {errors.confirmPassword && (
-                <span className="error-text">{errors.confirmPassword}</span>
+                <span className="sup-error-text">{errors.confirmPassword}</span>
               )}
             </div>
             <button 
               type="submit" 
               disabled={isLoading}
-              className={isLoading ? "loading" : ""}
+              className={`sup-submit-btn ${isLoading ? "sup-loading" : ""}`}
             >
               {isLoading ? "Signing up..." : "Sign Up"}
             </button>
           </form>
-          <div className="additional-links">
-            <Link to="/login" 
-            className="login-link"
-            >
-            Login
+          <div className="sup-additional-links">
+            <span>Already have an account?</span>
+            <Link to="/login" className="sup-login-link">
+              Login
             </Link>
           </div>
         </div>
