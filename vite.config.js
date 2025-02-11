@@ -5,4 +5,15 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   base: "/SPC/",
+  server: {
+    port: 5173,    
+  },
+  proxy: {
+    '/api': {
+      target: 'https://spc-backend-two.vercel.app/',
+      changeOrigin: true,
+      secure: false,
+    },
+  },
+  
 })

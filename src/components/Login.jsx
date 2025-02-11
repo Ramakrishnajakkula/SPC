@@ -1,17 +1,52 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./Login.css";
-import happeningsImage from "../assets/hack.jpeg"; // Import the image
+import happeningsImage from "../assets/hack.jpeg";
 
 function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({
+    username: "",
+    password: ""
+  });
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Handle login logic here
-    console.log("Username:", username);
-    console.log("Password:", password);
+    setError("");
+    
+    if (!formData.username || !formData.password) {
+      setError("Please enter both username and password");
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const response = await axios.post("https://spc-backend-two.vercel.app/api/auth/login", {
+        username: formData.username,
+        password: formData.password
+      });
+
+      // Store token
+      localStorage.setItem("token", response.data.token);
+      
+      // Redirect to home page
+      navigate("/");
+    } catch (error) {
+      setError(error.response?.data?.message || "Login failed. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -22,28 +57,39 @@ function Login() {
       <div className="login-frame">
         <div className="login-box">
           <h1 className="login-title">Login</h1>
+          {error && <div className="error-message">{error}</div>}
           <form onSubmit={handleSubmit} className="login-form">
             <div className="form-group">
-              <label>Username:</label>
               <input
                 type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+                placeholder="Enter username"
               />
             </div>
             <div className="form-group">
-              <label>Password:</label>
               <input
                 type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                placeholder="Enter password"
               />
             </div>
-            <button type="submit">Login</button>
+            <button 
+              type="submit" 
+              disabled={isLoading}
+              className={isLoading ? "loading" : ""}
+            >
+              {isLoading ? "Logging in..." : "Login"}
+            </button>
           </form>
           <div className="additional-links">
-            <Link to="/signup" className="signup-link">Sign Up</Link>
-            <Link to="/forgot-password" className="forgot-password-link">Forgot Password?</Link>
+            <span>Don't have an account?</span>
+            <Link to="/signup" className="signup-link">
+              Sign Up
+            </Link>
           </div>
         </div>
       </div>

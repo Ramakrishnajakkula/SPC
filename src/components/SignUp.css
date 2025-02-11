@@ -57,13 +57,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.25rem; /* Reduced gap between form elements */
+  gap: 0.01rem; /* Reduced gap between form elements */
 }
 
 .form-group {
   width: auto;
-  height:40px;
-  margin-bottom: 1rem; /* Reduced margin */
+  min-height: 55px;
+  margin-bottom: 0.5rem; /* Reduced margin */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -89,7 +89,7 @@
 
 .signup-form button {
   width: 70%;
-  margin: 1rem auto;
+  margin: 0rem 0rem 0rem 0rem;
   display: block;
 }
 
@@ -100,7 +100,7 @@
 .additional-links {
   display: flex;
   justify-content: center;
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 .login-link {
@@ -111,6 +111,36 @@
 
 .login-link:hover {
   color: rgb(172, 58, 4);
+}
+
+/* SignUp.css */
+.error-text {
+  color: #ff4444;
+  font-size: 0.8rem;
+  margin-top: 0rem;
+  margin-bottom: 0.1rem;
+}
+
+.error-message {
+  color: #ff4444;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  padding: 0.25rem;
+  line-height: 1.4;
+  max-width: 250px;
+  text-align: center;
+  display: block;
+  overflow-wrap: break-word;
+  white-space: pre-line;
+}
+
+button.loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+button:disabled {
+  background-color: #cccccc;
 }
 @media (max-width: 768px) {
   .happenings {
