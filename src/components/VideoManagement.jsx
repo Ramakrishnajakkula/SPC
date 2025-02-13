@@ -31,7 +31,7 @@ const VideoManagement = () => {
 
   const fetchVideos = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/videos');
+      const response = await axios.get('https://spc-backend-two.vercel.app/api/videos');
       setVideos(response.data);
     } catch (error) {
       console.error('Error fetching videos:', error);
