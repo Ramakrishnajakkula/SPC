@@ -56,7 +56,7 @@ useEffect(() => {
             Home
           </Link>
           <Link to="/VideoManagement" className="nav-link">
-            Seasons
+            Manage Seasons
           </Link>
           <Link to="/Hackathons" className="nav-link">
             Hackathons

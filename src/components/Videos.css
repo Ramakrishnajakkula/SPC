@@ -176,7 +176,7 @@
   
   @media (max-width: 768px) {
     .vid-container {
-      padding: 1rem;
+      padding: 0rem;
     }
   
     .vid-grid {

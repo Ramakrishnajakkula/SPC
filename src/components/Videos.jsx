@@ -104,7 +104,7 @@ const Videos = () => {
         </select>
       </div>
 
-      <div className="vid-grid">
+      <div className="vid-grid width: 100%;">
         {filteredVideos.map((video) => (
           <div key={video._id} className="vid-card">
             <h3 className="vid-title">{video.title}</h3>
