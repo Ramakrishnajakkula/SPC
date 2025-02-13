@@ -1,11 +1,11 @@
-import { useState,useEffect } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBars } from "@fortawesome/free-solid-svg-icons"
-import "./Home.css"
-import happeningsImage from "../assets/image.png"
-import Logo from "../assets/Logo.png"
-import Videos from './Videos';
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import "./Home.css";
+import happeningsImage from "../assets/image.png";
+import Logo from "../assets/Logo.png";
+import Videos from "./Videos";
 
 function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,24 +14,24 @@ function Home() {
   const navigate = useNavigate();
 
   // Update Home.jsx useEffect
-useEffect(() => {
-  const checkAuth = () => {
-    const token = localStorage.getItem("token");
-    const storedUsername = localStorage.getItem("username");
-    if (token) {
-      setIsLoggedIn(true);
-      setUsername(storedUsername || "User");
-    } else {
-      setIsLoggedIn(false);
-      setUsername("");
-    }
-  };
+  useEffect(() => {
+    const checkAuth = () => {
+      const token = localStorage.getItem("token");
+      const storedUsername = localStorage.getItem("username");
+      if (token) {
+        setIsLoggedIn(true);
+        setUsername(storedUsername || "User");
+      } else {
+        setIsLoggedIn(false);
+        setUsername("");
+      }
+    };
 
-  checkAuth();
-  // Add event listener for storage changes
-  window.addEventListener('storage', checkAuth);
-  return () => window.removeEventListener('storage', checkAuth);
-}, []);
+    checkAuth();
+    // Add event listener for storage changes
+    window.addEventListener("storage", checkAuth);
+    return () => window.removeEventListener("storage", checkAuth);
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -64,10 +64,9 @@ useEffect(() => {
           <Link to="/About" className="nav-link">
             About
           </Link>
-          
+
           {isLoggedIn ? (
             <>
-              
               <button onClick={handleLogout} className="logout-btn">
                 Logout
               </button>
@@ -94,17 +93,22 @@ useEffect(() => {
             Techfluence – Where Innovators & Creators Unite
           </h1>
           <p className="main-description">
-            The ultimate tech & creator summit at Lovely Professional University.
+            The ultimate tech & creator summit at Lovely Professional
+            University.
           </p>
         </div>
         <div className="right-section">
-        <img src={happeningsImage || "/placeholder.svg"} alt="Opportunities" className="hero-image" />
+          <img
+            src={happeningsImage || "/placeholder.svg"}
+            alt="Opportunities"
+            className="hero-image"
+          />
         </div>
       </div>
       <div className="home-videos-section">
-    <h2>Featured Videos</h2>
-      <Videos />
-  </div>
+        <h2>Featured Videos</h2>
+        <Videos />
+      </div>
     </div>
   );
 }
