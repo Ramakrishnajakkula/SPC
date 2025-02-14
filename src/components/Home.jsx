@@ -49,7 +49,7 @@ function Home() {
       <nav className="navbar">
         <div className="brand-container">
           <img src={Logo} alt="Logo" className="nav-logo" />
-          <h3 className="brand-text">Techfluence</h3>
+          <h3 className="brand-text">Techinfluence</h3>
         </div>
         <div className={`nav-links ${isMenuOpen ? "active" : ""}`}>
           <Link to="/" className="nav-link">
@@ -90,7 +90,7 @@ function Home() {
       <div className="main-content">
         <div className="left-section">
           <h1 className="main-title">
-            Techfluence – Where Innovators & Creators Unite
+          Techinfluence – Where Innovators & Creators Unite
           </h1>
           <p className="main-description">
             The ultimate tech & creator summit at Lovely Professional
