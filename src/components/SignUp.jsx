@@ -76,7 +76,7 @@ function SignUp() {
 
     setIsLoading(true);
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/signup", {
+      const response = await axios.post("https://spc-backend-two.vercel.app/api/auth/signup", {
         username: formData.username,
         email: formData.email,
         password: formData.password
