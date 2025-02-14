@@ -1,5 +1,5 @@
 // Videos.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import './Videos.css';
 
@@ -9,48 +9,93 @@ const Videos = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentVideo, setCurrentVideo] = useState(null);
+  const [showSidebar, setShowSidebar] = useState(true);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     fetchVideos();
   }, []);
 
-  const fetchVideos = async () => {
+  // Update fetchVideos function in Videos.jsx
+const fetchVideos = async () => {
+  const API_URL = 'https://spc-backend-two.vercel.app/api/videos'; // Production URL
+  const MAX_RETRIES = 3;
+  let retries = 0;
+
+  const attemptFetch = async () => {
     try {
       setLoading(true);
       setError(null);
-      const response = await axios.get('https://spc-backend-two.vercel.app/api/videos', {
-        timeout: 5000,
+      const response = await axios.get(API_URL, {
+        timeout: 15000, // Increased timeout
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
+          'Content-Type': 'application/json',
+          'Cache-Control': 'no-cache',
+          'Pragma': 'no-cache'
+        },
+        validateStatus: status => status >= 200 && status < 300
       });
       
       if (response.data) {
         setVideos(response.data);
+        setLoading(false);
       } else {
         throw new Error('No data received from server');
       }
-      
     } catch (err) {
       console.error('Error fetching videos:', err);
-      if (err.code === 'ERR_NETWORK') {
-        setError('Unable to connect to server. Please check if backend is running.');
-      } else if (err.response?.status === 404) {
-        setError('Video endpoint not found. Please check API route.');
-      } else {
-        setError(`Failed to load videos: ${err.message}`);
+      
+      if (retries < MAX_RETRIES && (err.code === 'ERR_NETWORK' || err.code === 'ECONNABORTED')) {
+        retries++;
+        console.log(`Retrying... Attempt ${retries} of ${MAX_RETRIES}`);
+        await new Promise(resolve => setTimeout(resolve, 2000 * retries)); // Exponential backoff
+        return attemptFetch();
       }
+
+      let errorMessage = 'Failed to load videos. ';
+      if (err.code === 'ERR_NETWORK') {
+        errorMessage += 'Please check your internet connection.';
+      } else if (err.response?.status === 404) {
+        errorMessage += 'Videos not found.';
+      } else {
+        errorMessage += err.message;
+      }
+      
+      setError(errorMessage);
       setVideos([]);
-    } finally {
       setLoading(false);
     }
   };
 
+  await attemptFetch();
+};
   const getYouTubeId = (url) => {
     const regex = /(?:youtu\.be\/|youtube\.com(?:\/embed\/|\/v\/|\/watch\?v=|\/watch\?.+&v=))([\w-]{11})/;
     const match = url.match(regex);
     return match ? match[1] : null;
+  };
+
+  const handleVideoSelect = (video) => {
+    setCurrentVideo(video);
+    setTimeout(() => {
+      const iframe = videoRef.current;
+      if (iframe) {
+        iframe.focus();
+      }
+    }, 100);
+  };
+
+  const toggleSidebar = () => {
+    setShowSidebar(!showSidebar);
+  };
+
+  const getRecommendations = () => {
+    if (!currentVideo) return [];
+    return videos.filter(v => 
+      v.seasonNumber === currentVideo.seasonNumber && 
+      v._id !== currentVideo._id
+    );
   };
 
   const filteredVideos = selectedSeason === 'all' 
@@ -67,27 +112,76 @@ const Videos = () => {
 
   return (
     <div className="vid-container">
-{currentVideo && (
-  <div className="vid-featured-player">
-    <div className="vid-featured-wrapper">
-      <button 
-        className="vid-close-btn"
-        onClick={() => setCurrentVideo(null)}
-        aria-label="Close video"
-      >
-        ×
-      </button>
-      <iframe
-        src={`https://www.youtube.com/embed/${getYouTubeId(currentVideo.youtubeUrl)}?rel=0&modestbranding=1&autoplay=1`}
-        title={currentVideo.title}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-        className="vid-featured-iframe"
-      ></iframe>
-    </div>
-    {/* <h2 className="vid-featured-title">{currentVideo.title}</h2> */}
-  </div>
-)}
+      {currentVideo && (
+        <div className="vid-player-section">
+          <div className="vid-main-content">
+            <div className="vid-featured-player">
+              <div className="vid-featured-wrapper">
+                <button 
+                  className="vid-close-btn"
+                  onClick={() => setCurrentVideo(null)}
+                  aria-label="Close video"
+                >×</button>
+                <iframe
+                  ref={videoRef}
+                  src={`https://www.youtube.com/embed/${getYouTubeId(currentVideo.youtubeUrl)}?rel=0&modestbranding=1&autoplay=1`}
+                  title={currentVideo.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="vid-featured-iframe"
+                  tabIndex="0"
+                ></iframe>
+              </div>
+              <h2 className="vid-featured-title">{currentVideo.title}</h2>
+            </div>
+          </div>
+
+          {showSidebar && (
+            <div className="vid-sidebar">
+              <div className="vid-sidebar-header">
+                <h3>More from Season {currentVideo.seasonNumber}</h3>
+                <button 
+                  onClick={toggleSidebar} 
+                  className="vid-toggle-btn"
+                  aria-label="Collapse sidebar"
+                >
+                  <span className="vid-toggle-icon">&#60;</span>
+                </button>
+              </div>
+              <div className="vid-recommendations">
+                {getRecommendations().map(video => (
+                  <div 
+                    key={video._id} 
+                    className="vid-recommendation-card"
+                    onClick={() => handleVideoSelect(video)}
+                  >
+                    <div className="vid-recommendation-thumbnail">
+                      <img 
+                        src={`https://img.youtube.com/vi/${getYouTubeId(video.youtubeUrl)}/mqdefault.jpg`}
+                        alt={video.title}
+                      />
+                    </div>
+                    <div className="vid-recommendation-info">
+                      <h4>{video.title}</h4>
+                      <p>Season {video.seasonNumber}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {!showSidebar && (
+            <button 
+              onClick={toggleSidebar}
+              className="vid-toggle-btn vid-toggle-btn-collapsed"
+              aria-label="Expand sidebar"
+            >
+              <span className="vid-toggle-icon">&#62;</span>
+            </button>
+          )}
+        </div>
+      )}
 
       <div className="vid-season-filter">
         <select 
@@ -104,11 +198,11 @@ const Videos = () => {
         </select>
       </div>
 
-      <div className="vid-grid width: 100%;">
+      <div className="vid-grid">
         {filteredVideos.map((video) => (
           <div key={video._id} className="vid-card">
             <h3 className="vid-title">{video.title}</h3>
-            <div className="vid-wrapper" onClick={() => setCurrentVideo(video)}>
+            <div className="vid-wrapper" onClick={() => handleVideoSelect(video)}>
               <div className="vid-thumbnail">
                 <img 
                   src={`https://img.youtube.com/vi/${getYouTubeId(video.youtubeUrl)}/mqdefault.jpg`}
