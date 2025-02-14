@@ -1,326 +1,207 @@
 /* Videos.css */
 .vid-container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.vid-player-section {
-  display: flex;
-  gap: 2rem;
-  margin-bottom: 2rem;
-  position: relative;
-}
-
-.vid-main-content {
-  flex: 1;
-  min-width: 0;
-}
-
-.vid-featured-player {
-  width: 100%;
-  background: #000;
-  border-radius: 12px;
-  overflow: hidden;
-  position: relative;
-}
-
-.vid-featured-wrapper {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-}
-
-.vid-featured-iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-.vid-close-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.7);
-  border: none;
-  color: white;
-  font-size: 24px;
-  line-height: 1;
-  cursor: pointer;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease;
-}
-
-.vid-close-btn:hover {
-  background: rgba(255, 0, 0, 0.8);
-}
-
-.vid-featured-title {
-  padding: 1rem;
-  color: #fff;
-  margin: 0;
-  font-size: 1.2rem;
-}
-
-.vid-sidebar {
-  width: 350px;
-  flex-shrink: 0;
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.vid-sidebar-header {
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #eee;
-}
-
-.vid-toggle-btn {
-  background: transparent;
-  border: none;
-  color: #606060;
-  font-size: 20px;
-  cursor: pointer;
-  padding: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  transition: background-color 0.2s;
-}
-
-.vid-toggle-btn:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-.vid-recommendations {
-  overflow-y: auto;
-  max-height: calc(100vh - 200px);
-}
-
-.vid-recommendation-card {
-  display: flex;
-  gap: 1rem;
-  padding: 0.8rem;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.vid-recommendation-card:hover {
-  background-color: #f0f0f0;
-}
-
-.vid-recommendation-thumbnail {
-  width: 168px;
-  height: 94px;
-  border-radius: 8px;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.vid-recommendation-thumbnail img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.vid-recommendation-info {
-  flex: 1;
-}
-
-.vid-recommendation-info h4 {
-  margin: 0 0 0.5rem;
-  font-size: 0.9rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.vid-season-filter {
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-.vid-select {
-  padding: 12px 24px;
-  font-size: 1rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  background-color: white;
-  cursor: pointer;
-  min-width: 200px;
-}
-
-.vid-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.vid-card {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.vid-card:hover {
-  transform: translateY(-5px);
-}
-
-.vid-title {
-  padding: 1rem;
-  margin: 0;
-  font-size: 1rem;
-  color: #333;
-}
-
-.vid-wrapper {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.vid-thumbnail {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.vid-thumbnail img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.vid-play-button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60px;
-  height: 60px;
-  background: rgba(0, 0, 0, 0.7);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 24px;
-  transition: background-color 0.3s ease;
-}
-
-.vid-thumbnail:hover .vid-play-button {
-  background: rgba(255, 0, 0, 0.8);
-}
-
-.vid-season {
-  padding: 1rem;
-  margin: 0;
-  color: #666;
-  font-size: 0.9rem;
-  border-top: 1px solid #eee;
-}
-
-.vid-loading {
-  text-align: center;
-  padding: 2rem;
-  color: #666;
-  font-size: 1.2rem;
-}
-
-.vid-error {
-  text-align: center;
-  padding: 2rem;
-  color: #dc2626;
-  background: #fee2e2;
-  border-radius: 8px;
-  margin: 1rem;
-}
-
-.vid-no-videos {
-  text-align: center;
-  padding: 2rem;
-  color: #666;
-}
-
-.vid-toggle-icon {
-  font-family: monospace;
-  font-size: 24px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #606060;
-}
-
-@media (max-width: 1024px) {
-  .vid-player-section {
-    flex-direction: column;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
   }
-
-  .vid-sidebar {
-    width: 100%;
+  
+  .vid-season-filter {
+    margin-bottom: 2rem;
+    text-align: center;
   }
-
-  .vid-recommendations {
-    max-height: 400px;
-  }
-}
-
-@media (max-width: 768px) {
-  .vid-container {
-    padding: 1rem;
-  }
-
-  .vid-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
+  
   .vid-select {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .vid-featured-title {
+    padding: 12px 24px;
     font-size: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: white;
+    cursor: pointer;
+    min-width: 200px;
   }
-
-  .vid-recommendation-thumbnail {
-    width: 120px;
-    height: 68px;
+  
+  .vid-featured-player {
+    width: 100%;
+    max-width: 945px; /* Limit max width */
+    margin: 0 auto 2rem;
+    margin-bottom: 2rem;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
   }
-}
-
-@media (max-width: 480px) {
-  .vid-container {
-    padding: 0.5rem;
+  
+  .vid-featured-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
   }
-
+  
+  .vid-featured-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  
+  .vid-featured-title {
+    padding: 1rem;
+    color: #fff;
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  .vid-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+  
+  .vid-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .vid-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .vid-title {
+    padding: 1rem;
+    margin: 0;
+    font-size: 1.1rem;
+    color: #333;
+  }
+  
+  .vid-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .vid-thumbnail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .vid-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
   .vid-play-button {
-    width: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
     height: 40px;
-    font-size: 18px;
+    background: rgb(255, 112, 67);
+    border-radius: 6%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    transition: background 0.3s ease;
   }
-}
+  
+  .vid-thumbnail:hover .vid-play-button {
+    background: rgb(172, 58, 4);
+  }
+  
+  .vid-season {
+    padding: 1rem;
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+    border-top: 1px solid #eee;
+  }
+  
+  .vid-loading {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    font-size: 1.2rem;
+  }
+  
+  .vid-error {
+    text-align: center;
+    padding: 2rem;
+    color: #dc2626;
+    background: #fee2e2;
+    border-radius: 8px;
+    margin: 1rem;
+  }
+  
+  .vid-no-videos {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+  }
+  /* Add to Videos.css */
+.vid-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    color: white;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .vid-close-btn:hover {
+    background: rgba(255, 0, 0, 0.8);
+  }
+  
+  @media (max-width: 768px) {
+    .vid-container {
+      padding: 0rem;
+    }
+  
+    .vid-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  
+    .vid-select {
+      width: 100%;
+      max-width: 100%;
+    }
+  
+    .vid-featured-title {
+      font-size: 1.2rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .vid-title {
+      font-size: 1rem;
+    }
+  
+    .vid-play-button {
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
+    }
+  }
