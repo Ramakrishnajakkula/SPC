@@ -1,4 +1,70 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* Light Mode */
+
+/* Light Mode Variables */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7fafc;
+  --bg-tertiary: #edf2f7;
+  --text-primary: #2d3748;
+  --text-secondary: #4a5568;
+  --text-muted: #718096;
+  --border-color: #e2e8f0;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --accent: rgb(255, 112, 67);
+  --accent-hover: rgb(172, 58, 4);
+}
+
+/* Dark Mode Variables */
+.dark {
+  --bg-primary: #1a202c;
+  --bg-secondary: #2d3748;
+  --bg-tertiary: #4a5568;
+  --text-primary: #f7fafc;
+  --text-secondary: #e2e8f0;
+  --text-muted: #a0aec0;
+  --border-color: #4a5568;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --accent: rgb(255, 112, 67);
+  --accent-hover: rgb(255, 140, 105);
+}
+
+/* Global styles */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Form input styles */
+input, textarea, select {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(255, 112, 67, 0.1);
+}
+
+/* Button styles */
+button {
+  transition: all 0.3s ease;
+}
+
+/* Link styles */
+a {
+  color: var(--text-secondary);
+}
+
+a:hover {
+  color: var(--accent);
+}

@@ -4,13 +4,14 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./SignUp.css";
 import happeningsImage from "../assets/hack.jpeg";
+import ThemeToggle from "./ThemeToggle";
 
 function SignUp() {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -18,7 +19,7 @@ function SignUp() {
 
   const validateForm = () => {
     const newErrors = {};
-    
+
     // Username validation
     if (!formData.username.trim()) {
       newErrors.username = "Username is required";
@@ -39,7 +40,7 @@ function SignUp() {
     if (!formData.password) {
       newErrors.password = "Password is required";
     } else if (!passwordRegex.test(formData.password)) {
-      newErrors.password = 
+      newErrors.password =
         "Password must be at least 8 characters with 1 uppercase, 1 lowercase and 1 number";
     }
 
@@ -54,40 +55,44 @@ function SignUp() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
+    setFormData((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
     // Clear error when user starts typing
     if (errors[name]) {
-      setErrors(prevErrors => ({
+      setErrors((prevErrors) => ({
         ...prevErrors,
-        [name]: ""
+        [name]: "",
       }));
     }
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
 
     setIsLoading(true);
     try {
-      const response = await axios.post("https://spc-backend-two.vercel.app/api/auth/signup", {
-        username: formData.username,
-        email: formData.email,
-        password: formData.password
-      });
+      const response = await axios.post(
+        "https://spc-backend-two.vercel.app/api/auth/signup",
+        {
+          username: formData.username,
+          email: formData.email,
+          password: formData.password,
+        }
+      );
 
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("username", formData.username);
       navigate("/");
     } catch (error) {
       setErrors({
-        submit: error.response?.data?.message || "Signup failed. Please try again."
+        submit:
+          error.response?.data?.message || "Signup failed. Please try again.",
       });
     } finally {
       setIsLoading(false);
@@ -101,7 +106,10 @@ function SignUp() {
       </div>
       <div className="sup-frame">
         <div className="sup-box">
-          <h1 className="sup-title">Sign Up</h1>
+          <div className="sup-header">
+            <h1 className="sup-title">Sign Up</h1>
+            <ThemeToggle />
+          </div>
           {errors.submit && (
             <div className="sup-error-message">{errors.submit}</div>
           )}
@@ -158,11 +166,10 @@ function SignUp() {
                 <span className="sup-error-text">{errors.confirmPassword}</span>
               )}
             </div>
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               disabled={isLoading}
-              className={`sup-submit-btn ${isLoading ? "sup-loading" : ""}`}
-            >
+              className={`sup-submit-btn ${isLoading ? "sup-loading" : ""}`}>
               {isLoading ? "Signing up..." : "Sign Up"}
             </button>
           </form>

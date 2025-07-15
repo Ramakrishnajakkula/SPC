@@ -3,14 +3,15 @@
     max-width: 600px;
     margin: 2rem auto;
     padding: 2rem;
-    background-color: #ffffff;
+    background-color: var(--bg-primary);
     border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px var(--shadow);
+    border: 1px solid var(--border-color);
 }
 
 .vid-mgmt-title {
     font-size: 1.8rem;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 2rem;
     text-align: center;
 }
@@ -26,16 +27,22 @@
 .vid-mgmt-input {
     width: 100%;
     padding: 12px;
-    border: 2px solid #e0e0e0;
+    border: 2px solid var(--border-color);
     border-radius: 8px;
     font-size: 1rem;
     transition: all 0.3s ease;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
 }
 
 .vid-mgmt-input:focus {
-    border-color: #4a90e2;
+    border-color: var(--accent);
     outline: none;
-    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+    box-shadow: 0 0 0 3px rgba(255, 112, 67, 0.1);
+}
+
+.vid-mgmt-input::placeholder {
+    color: var(--text-muted);
 }
 
 .vid-mgmt-checkbox-label {
@@ -43,7 +50,7 @@
     align-items: center;
     gap: 10px;
     font-size: 1rem;
-    color: #555;
+    color: var(--text-secondary);
     cursor: pointer;
 }
 
@@ -51,13 +58,13 @@
     width: 20px;
     height: 20px;
     cursor: pointer;
-    accent-color: #4a90e2;
+    accent-color: var(--accent);
 }
 
 .vid-mgmt-submit {
     width: 100%;
     padding: 14px;
-    background-color: #4a90e2;
+    background-color: var(--accent);
     color: white;
     border: none;
     border-radius: 8px;
@@ -68,18 +75,18 @@
 }
 
 .vid-mgmt-submit:hover {
-    background-color: #357abd;
+    background-color: var(--accent-hover);
 }
 
 .vid-mgmt-list {
     margin-top: 2rem;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid var(--border-color);
     padding-top: 1rem;
 }
 
 .vid-mgmt-list-title {
     font-size: 1.5rem;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 1.5rem;
 }
 
@@ -88,12 +95,12 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-color);
     transition: background-color 0.2s ease;
 }
 
 .vid-mgmt-item:hover {
-    background-color: #f8f9fa;
+    background-color: var(--bg-tertiary);
 }
 
 .vid-mgmt-info {
@@ -102,13 +109,13 @@
 
 .vid-mgmt-item-title {
     margin: 0;
-    color: #333;
+    color: var(--text-primary);
     font-size: 1.1rem;
 }
 
 .vid-mgmt-item-season {
     margin: 0.5rem 0 0;
-    color: #666;
+    color: var(--text-secondary);
     font-size: 0.9rem;
 }
 

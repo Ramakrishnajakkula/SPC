@@ -13,11 +13,19 @@
 .vid-select {
   padding: 12px 24px;
   font-size: 1rem;
-  border: 2px solid #e0e0e0;
+  border: 2px solid var(--border-color);
   border-radius: 8px;
-  background-color: white;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   cursor: pointer;
   min-width: 200px;
+  transition: all 0.3s ease;
+}
+
+.vid-select:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 112, 67, 0.1);
 }
 
 .vid-featured-player {
@@ -59,10 +67,11 @@
 }
 
 .vid-card {
-  background: white;
+  background: var(--bg-primary);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px var(--shadow);
+  border: 1px solid var(--border-color);
   transition: transform 0.3s ease;
 }
 
@@ -74,7 +83,7 @@
   padding: 1rem;
   margin: 0;
   font-size: 1.1rem;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .vid-wrapper {
@@ -290,9 +299,10 @@
   margin: 0 0 4px;
   font-size: 14px;
   line-height: 1.4;
-  color: #0f0f0f;
+  color: var(--text-primary);
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
