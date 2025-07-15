@@ -1,4 +1,3 @@
-import React from "react";
 import "./Home.css";
 import happeningsImage from "../assets/image.png";
 import Videos from "./Videos";

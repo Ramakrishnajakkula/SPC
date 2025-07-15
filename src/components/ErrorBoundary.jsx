@@ -54,7 +54,7 @@ class ErrorBoundary extends Component {
             </div>
             <h2 className="error-title">Oops! Something went wrong</h2>
             <p className="error-message">
-              We're sorry, but something unexpected happened. Please try
+              We are sorry, but something unexpected happened. Please try
               reloading the page.
             </p>
             <div className="error-actions">

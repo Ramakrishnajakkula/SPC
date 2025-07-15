@@ -277,7 +277,7 @@ const About = () => {
                   />
                 </svg>
               </div>
-              <h4 className="member-name">Alex Johnson</h4>
+              <h4 className="member-name">Rama Krishna</h4>
               <p className="member-role">Founder & CEO</p>
               <p className="member-description">
                 Passionate about technology and community building with 10+
@@ -301,7 +301,7 @@ const About = () => {
                   />
                 </svg>
               </div>
-              <h4 className="member-name">Sarah Chen</h4>
+              <h4 className="member-name">Ramanjaneyulu</h4>
               <p className="member-role">Technical Director</p>
               <p className="member-description">
                 Full-stack developer and mentor who loves helping others learn
@@ -325,7 +325,7 @@ const About = () => {
                   />
                 </svg>
               </div>
-              <h4 className="member-name">Michael Rodriguez</h4>
+              <h4 className="member-name">Brahamam</h4>
               <p className="member-role">Community Manager</p>
               <p className="member-description">
                 Dedicated to building strong relationships and fostering
