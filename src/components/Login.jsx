@@ -40,11 +40,7 @@ function Login() {
 
     setIsLoading(true);
 
-    // Debug log to see what data is being sent
-    console.log("Attempting login with:", {
-      username: formData.username,
-      password: formData.password ? "***masked***" : "empty",
-    });
+
 
     try {
       const response = await axios.post(
