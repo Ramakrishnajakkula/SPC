@@ -224,28 +224,15 @@ const Hackathon = () => {
             own!
           </p>
 
-          <div className="hackathon-actions">
-            <button onClick={handleCreateHackathon} className="btn btn-primary">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M12 5V19M5 12H19"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              Create Hackathon
-            </button>
-          </div>
+          
         </div>
 
         <div className="hackathon-tabs">
+            <SearchBar
+                onSearch={setSearchTerm}
+                placeholder="Search hackathons by title"
+                className="hackathon-search"
+              />
           <button
             className={`tab-button ${activeTab === "browse" ? "active" : ""}`}
             onClick={() => setActiveTab("browse")}>
@@ -314,6 +301,13 @@ const Hackathon = () => {
                 activeTab === "my-created" ? "active" : ""
               }`}
               onClick={() => setActiveTab("my-created")}>
+              
+              My Created Hackathons
+            </button>
+            
+          )}
+          <div className="hackathon-actions">
+            <button onClick={handleCreateHackathon} className="btn btn-primary">
               <svg
                 width="20"
                 height="20"
@@ -328,9 +322,9 @@ const Hackathon = () => {
                   strokeLinejoin="round"
                 />
               </svg>
-              My Created Hackathons
+              Create Hackathon
             </button>
-          )}
+          </div>
         </div>
       </div>
 
@@ -338,11 +332,7 @@ const Hackathon = () => {
         {activeTab === "browse" && (
           <div className="browse-section">
             <div className="browse-header">
-              <SearchBar
-                onSearch={setSearchTerm}
-                placeholder="Search hackathons by title or theme..."
-                className="hackathon-search"
-              />
+              
               <div className="hackathon-stats">
                 <span className="stats-item">
                   <strong>{filteredHackathons.length}</strong> hackathons

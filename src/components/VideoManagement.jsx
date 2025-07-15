@@ -168,7 +168,7 @@ const VideoManagement = () => {
                   min="1"
                   value={videoData.seasonNumber}
                   onChange={(e) =>
-                    setVideoData({ ...videoData, seasonNumber: e.target.value })
+                    setVideoData({ ...videoData, seasonNumber: e.target.value  })
                   }
                   required
                   className="vid-mgmt-input"
