@@ -14,6 +14,14 @@
   --shadow: rgba(0, 0, 0, 0.1);
   --accent: rgb(255, 112, 67);
   --accent-hover: rgb(172, 58, 4);
+  
+  /* About page specific variables */
+  --primary-color: #3182ce;
+  --secondary-color: #805ad5;
+  --text-color: #2d3748;
+  --text-color-secondary: #4a5568;
+  --background-alt: #f8f9fa;
+  --card-background: #ffffff;
 }
 
 /* Dark Mode Variables */
@@ -28,6 +36,14 @@
   --shadow: rgba(0, 0, 0, 0.3);
   --accent: rgb(255, 112, 67);
   --accent-hover: rgb(255, 140, 105);
+  
+  /* About page dark mode variables */
+  --primary-color: #63b3ed;
+  --secondary-color: #b794f6;
+  --text-color: #f7fafc;
+  --text-color-secondary: #e2e8f0;
+  --background-alt: #1a1a1a;
+  --card-background: #2d2d2d;
 }
 
 /* Global styles */
@@ -45,14 +61,31 @@ body {
 
 /* Form input styles */
 input, textarea, select {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  border-color: var(--border-color);
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+/* Ensure input text is always visible */
+input::placeholder, textarea::placeholder {
+  color: var(--text-muted) !important;
+  opacity: 1;
 }
 
 input:focus, textarea:focus, select:focus {
-  border-color: var(--accent);
+  border-color: var(--accent) !important;
   box-shadow: 0 0 0 3px rgba(255, 112, 67, 0.1);
+  outline: none;
+}
+
+/* Specific fixes for search inputs */
+.search-input {
+  background: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.search-input::placeholder {
+  color: var(--text-muted) !important;
 }
 
 /* Button styles */

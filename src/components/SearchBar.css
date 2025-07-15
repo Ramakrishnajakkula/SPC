@@ -8,7 +8,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  background: var(--bg-primary);
+  background: var(--bg-secondary);
   border: 2px solid var(--border-color);
   border-radius: 12px;
   padding: 0;
@@ -32,15 +32,16 @@
 .search-input {
   flex: 1;
   border: none;
-  background: transparent;
+  background: var(--bg-primary) !important;
   padding: 12px 8px;
   font-size: 1rem;
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
   outline: none;
 }
 
 .search-input::placeholder {
-  color: var(--text-muted);
+  color: var(--text-muted) !important;
+  opacity: 1;
 }
 
 .search-clear {

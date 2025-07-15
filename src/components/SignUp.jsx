@@ -5,6 +5,8 @@ import axios from "axios";
 import "./SignUp.css";
 import happeningsImage from "../assets/hack.jpeg";
 import ThemeToggle from "./ThemeToggle";
+import { getAuthUrl } from "../config/api";
+import API_CONFIG from "../config/api";
 
 function SignUp() {
   const [formData, setFormData] = useState({
@@ -78,7 +80,7 @@ function SignUp() {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        "https://spc-backend-two.vercel.app/api/auth/signup",
+        getAuthUrl(API_CONFIG.ENDPOINTS.AUTH.SIGNUP),
         {
           username: formData.username,
           email: formData.email,

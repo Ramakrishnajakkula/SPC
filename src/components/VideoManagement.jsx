@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./VideoManagement.css";
+import { getHackathonUrl } from "../config/api";
+import API_CONFIG from "../config/api";
 
 const VideoManagement = () => {
   const navigate = useNavigate();
@@ -31,7 +33,9 @@ const VideoManagement = () => {
 
   const fetchVideos = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/videos");
+      const response = await axios.get(
+        getHackathonUrl(API_CONFIG.ENDPOINTS.VIDEOS.BASE)
+      );
       setVideos(response.data);
     } catch (error) {
       console.error("Error fetching videos:", error);
@@ -41,11 +45,15 @@ const VideoManagement = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/videos", videoData, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      await axios.post(
+        getHackathonUrl(API_CONFIG.ENDPOINTS.VIDEOS.BASE),
+        videoData,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       alert("Video added successfully!");
       setVideoData({
         title: "",
@@ -66,11 +74,14 @@ const VideoManagement = () => {
     }
 
     try {
-      await axios.delete(`http://localhost:5000/api/videos/${videoId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      await axios.delete(
+        getHackathonUrl(API_CONFIG.ENDPOINTS.VIDEOS.BY_ID(videoId)),
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       alert("Video deleted successfully!");
       fetchVideos();
     } catch (error) {

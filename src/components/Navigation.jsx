@@ -43,7 +43,7 @@ function Navigation() {
         <Link to="/VideoManagement" className="nav-link">
           Manage Seasons
         </Link>
-        <Link to="/Hackathons" className="nav-link">
+        <Link to="/hackathon" className="nav-link">
           Hackathons
         </Link>
         <Link to="/About" className="nav-link">

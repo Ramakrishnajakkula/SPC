@@ -4,6 +4,8 @@ import axios from "axios";
 import "./Login.css";
 import happeningsImage from "../assets/hack.jpeg";
 import ThemeToggle from "./ThemeToggle";
+import { getAuthUrl } from "../config/api";
+import API_CONFIG from "../config/api";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -40,11 +42,9 @@ function Login() {
 
     setIsLoading(true);
 
-
-
     try {
       const response = await axios.post(
-        "https://spc-backend-two.vercel.app/api/auth/login",
+        getAuthUrl(API_CONFIG.ENDPOINTS.AUTH.LOGIN),
         {
           username: formData.username,
           password: formData.password,

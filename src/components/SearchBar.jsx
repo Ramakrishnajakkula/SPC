@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import './SearchBar.css';
+import { useState } from "react";
+import "./SearchBar.css";
 
 const SearchBar = ({ onSearch, placeholder = "Search...", className = "" }) => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [isFocused, setIsFocused] = useState(false);
 
   const handleSubmit = (e) => {
@@ -13,19 +13,39 @@ const SearchBar = ({ onSearch, placeholder = "Search...", className = "" }) => {
   };
 
   const handleClear = () => {
-    setSearchTerm('');
+    setSearchTerm("");
     if (onSearch) {
-      onSearch('');
+      onSearch("");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className={`search-bar ${className} ${isFocused ? 'search-bar-focused' : ''}`}>
+    <form
+      onSubmit={handleSubmit}
+      className={`search-bar ${className} ${
+        isFocused ? "search-bar-focused" : ""
+      }`}>
       <div className="search-input-container">
         <div className="search-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="2"/>
-            <path d="M21 21L16.65 16.65" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <circle
+              cx="11"
+              cy="11"
+              r="8"
+              stroke="currentColor"
+              strokeWidth="2"
+            />
+            <path
+              d="M21 21L16.65 16.65"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
           </svg>
         </div>
         <input
@@ -42,17 +62,42 @@ const SearchBar = ({ onSearch, placeholder = "Search...", className = "" }) => {
             type="button"
             onClick={handleClear}
             className="search-clear"
-            aria-label="Clear search"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+            aria-label="Clear search">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M18 6L6 18M6 6L18 18"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
             </svg>
           </button>
         )}
         <button type="submit" className="search-submit" aria-label="Search">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="2"/>
-            <path d="M21 21L16.65 16.65" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <circle
+              cx="11"
+              cy="11"
+              r="8"
+              stroke="currentColor"
+              strokeWidth="2"
+            />
+            <path
+              d="M21 21L16.65 16.65"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
           </svg>
         </button>
       </div>
